@@ -5,7 +5,7 @@ FROM node:22-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY src/package*.json ./
 
 # Install dependencies
 RUN npm install
@@ -13,11 +13,8 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Build the React app
-RUN npm run build
-
 # Expose the port on which the app runs
 EXPOSE 3000
 
 # Define the command to run the app
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
